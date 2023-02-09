@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-// Treat this function as main
 
 #define MAX 128
 
@@ -95,7 +94,6 @@ void writeString(FILE *aFile, char **array, int dim){
     return;
 }
 
-// TODO all changes should be made above this line
 int main(int argc, char* argv[])
 {
     int ret = 0;
