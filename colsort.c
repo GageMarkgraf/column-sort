@@ -18,9 +18,9 @@ int drive_sort(int argc, char* argv[]){
     }
 
     fscanf(file, "%d%d", &row, &col);
-    strMat = readFile(file, row, col);
-    array = mergeString(strMat, row, col);
-    writeString(fileTwo, array, row*col);
+    strMat = copyFile(file, row, col);
+    array = combine(strMat, row, col);
+    pasteFile(fileTwo, array, row*col);
     return 0;
 }
 char ***copyFile(FILE *aFile, int row, int col){
