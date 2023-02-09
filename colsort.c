@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-
 #define MAX 128
 
-char ***readFile(FILE *aFile, int row, int col);
-char **mergeString(char **strMat, int row, int col);
-void writeString(FILE *aFile, char **array, int dim);
+char ***copyFile(FILE *aFile, int row, int col);
+char **combine(char **strMat, int row, int col);
+void pasteFile(FILE *aFile, char **array, int dim);
 int drive_sort(int argc, char* argv[]){
     FILE *file, *fileTwo;
     char ***strMat;
@@ -15,7 +13,7 @@ int drive_sort(int argc, char* argv[]){
     char **array;
 
     if((file=fopen(argv[1], "r")) != NULL || (file=fopen(argv[2], "w")) == NULL){
-        printf(stderr, "Error: Opening File \n");
+        printf("Error: Opening File \n");
         exit(1);
     }
 
@@ -25,18 +23,18 @@ int drive_sort(int argc, char* argv[]){
     writeString(fileTwo, array, row*col);
     return 0;
 }
-char ***readFile(FILE *aFile, int row, int col){
+char ***copyFile(FILE *aFile, int row, int col){
     char ***strMatr;
     int i, j;
     char max[MAX];
     if((strMatr=malloc((row)*sizeof(char **))) == NULL){
-    printf(stderr, "Error: Allocation of Memory \n");
+    printf("Error: Allocation of Memory \n");
     exit(2);
     }
 
     for(i=0; i < row; i++){
         if((strMatr[i]=malloc((col)*sizeof(char **))) == NULL){
-            printf(stderr, "Error: Allocation of Memory \n");
+            printf("Error: Allocation of Memory \n");
             exit(3);
         }
     }
@@ -45,7 +43,7 @@ char ***readFile(FILE *aFile, int row, int col){
         for(j = 0; j < col; j++){
             fscanf(aFile, "%s", max);
             if(j > 0 && strcmp(strMatr[i][j-1], max) > 0){
-                printf(stderr, "Error: Strings not in ascending order \n");
+                printf("Error: Strings not in ascending order \n");
                 exit(4);
             }
             strMatr[i][j]=strup(max);
@@ -55,18 +53,18 @@ char ***readFile(FILE *aFile, int row, int col){
     return strMatr;
 
 }
-char **mergeString(char **strMat, int row, int col){
+char **combine(char **strMat, int row, int col){
     char **arr;
     int i, j;
     int *c;
     int maxC;
     char *tempStr;
     if((arr=malloc((row*col)*sizeof(char*))) == NULL){
-        printf(stderr, "Error: Allocation of memory \n");
+        printf("Error: Allocation of memory \n");
         exit(5);
     }
     if((c=calloc(row, sizeof(int))) == NULL){
-        printf(stderr, "Error Allocation of memory: \n");
+        printf("Error Allocation of memory: \n");
         exit(6);
     }
     while(i < row*col){
@@ -84,7 +82,7 @@ char **mergeString(char **strMat, int row, int col){
     free(c);
     return arr;
 }
-void writeString(FILE *aFile, char **array, int dim){
+void pasteFile(FILE *aFile, char **array, int dim){
     int i;
     fprintf(aFile, "%d\n", dim);
     for(i = 0; i < dim; i++){
