@@ -70,7 +70,7 @@ char **combine(char ***strMat, int row, int col){
         maxC=-1;
         for(j=0; j < row; j++){
             if(c[j] < col){
-                if((maxC==-1) || strcmp(strMat[j][(int*)c[j]], tempStr) > 0){
+                if((maxC==-1) || strcmp(strMat[j][c[j]], tempStr) > 0){
                     maxC = j;
                     tempStr = strMat[maxC][c[maxC]];
                 }
