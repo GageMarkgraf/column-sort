@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #define MAX 128
 
 char ***copyFile(FILE *aFile, int row, int col);
-char **combine(char **strMat, int row, int col);
+int strcmp(const char *strOne, const char *strTwo);
+char *strdup(const char *strOne);
+char **combine(char ***strMat, int row, int col);
 void pasteFile(FILE *aFile, char **array, int dim);
 int drive_sort(int argc, char* argv[]){
     FILE *file, *fileTwo;
@@ -24,16 +27,16 @@ int drive_sort(int argc, char* argv[]){
     return 0;
 }
 char ***copyFile(FILE *aFile, int row, int col){
-    char ***strMatr;
+    char ***strMat;
     int i, j;
     char max[MAX];
-    if((strMatr=malloc((row)*sizeof(char **))) == NULL){
+    if((strMat=malloc((row)*sizeof(char **))) == NULL){
     printf("Error: Allocation of Memory \n");
     exit(2);
     }
 
     for(i=0; i < row; i++){
-        if((strMatr[i]=malloc((col)*sizeof(char **))) == NULL){
+        if((strMat[i]=malloc((col)*sizeof(char **))) == NULL){
             printf("Error: Allocation of Memory \n");
             exit(3);
         }
@@ -42,15 +45,11 @@ char ***copyFile(FILE *aFile, int row, int col){
     for(i=0; i < row; i++){
         for(j = 0; j < col; j++){
             fscanf(aFile, "%s", max);
-            if(j > 0 && strcmp(strMatr[i][j-1], max) > 0){
-                printf("Error: Strings not in ascending order \n");
-                exit(4);
-            }
-            strMatr[i][j]=strup(max);
+            strMat[i][j]=strdup(max);
         }
     }
     fclose(aFile);
-    return strMatr;
+    return strMat;
 
 }
 char **combine(char **strMat, int row, int col){
@@ -61,17 +60,17 @@ char **combine(char **strMat, int row, int col){
     char *tempStr;
     if((arr=malloc((row*col)*sizeof(char*))) == NULL){
         printf("Error: Allocation of memory \n");
-        exit(5);
+        exit(4);
     }
     if((c=calloc(row, sizeof(int))) == NULL){
         printf("Error Allocation of memory: \n");
-        exit(6);
+        exit(5);
     }
     while(i < row*col){
         maxC=-1;
         for(j=0; j < row; j++){
             if(c[j] < col){
-                if((maxC==-1) || strcmp(strMat[j][c[j]],tempStr > 0)){
+                if((maxC==-1) || strcmp(strMat[j][c[j]],tempStr) > 0){
                     maxC = j;
                     tempStr = strMat[maxC][c[maxC]];
                 }
