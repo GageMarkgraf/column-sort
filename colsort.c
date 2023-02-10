@@ -55,7 +55,7 @@ char ***copyFile(FILE *aFile, int row, int col){
 char **combine(char **strMat, int row, int col){
     char **arr;
     int i, j;
-    int c;
+    int *c;
     int maxC;
     char *tempStr;
     if((arr=malloc((row*col)*sizeof(char*))) == NULL){
@@ -70,7 +70,7 @@ char **combine(char **strMat, int row, int col){
         maxC=-1;
         for(j=0; j < row; j++){
             if(c[j] < col){
-                if((maxC==-1) || strcmp(strMat[j][c[j]], tempStr) > 0){
+                if((maxC==-1) || strcmp(strMat[j][(int*)c[j]], tempStr) > 0){
                     maxC = j;
                     tempStr = strMat[maxC][c[maxC]];
                 }
@@ -90,6 +90,7 @@ void pasteFile(FILE *aFile, char **array, int dim){
     fclose(aFile);
     return;
 }
+
 
 int main(int argc, char* argv[])
 {
