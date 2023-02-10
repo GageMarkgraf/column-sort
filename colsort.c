@@ -10,7 +10,8 @@ char *strdup(const char *strOne);
 char **combine(char ***strMat, int row, int col);
 void pasteFile(FILE *aFile, char **array, int dim);
 int drive_sort(int argc, char* argv[]){
-    FILE *file, *fileTwo;
+    FILE *file;
+    FILE *fileTwo;
     char ***strMat;
     int row, col;
     char **array;
@@ -44,7 +45,7 @@ char ***copyFile(FILE *aFile, int row, int col){
 
     for(i=0; i < row; i++){
         for(j = 0; j < col; j++){
-            fscanf(aFile, "%s", max);
+            fscanf(aFile, "%d", max);
             strMat[i][j]=strdup(max);
         }
     }
@@ -99,11 +100,11 @@ int main(int argc, char* argv[])
     struct timespec s;
     struct timespec e;
 
-    clock_gettime(CLOCK_MONOTONIC, &s);
+    //clock_gettime(CLOCK_MONOTONIC, &s);
     ret = drive_sort(argc, argv);
-    clock_gettime(CLOCK_MONOTONIC, &e);
-    time = e.tv_sec - s.tv_sec + (e.tv_nsec - s.tv_nsec)/1e9;
+    //clock_gettime(CLOCK_MONOTONIC, &e);
+    //time = e.tv_sec - s.tv_sec + (e.tv_nsec - s.tv_nsec)/1e9;
 
-    fprintf(stderr, "time: %lfs\n", time);
+    //fprintf(stderr, "time: %lfs\n", time);
     return ret;
 }
