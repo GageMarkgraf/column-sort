@@ -11,7 +11,7 @@ char **combine(char **strMat, int row, int col);
 void pasteFile(FILE *aFile, char **array, int dim);
 int drive_sort(int argc, char* argv[]){
     FILE *file, *fileTwo;
-    char ***strMat;
+    char **strMat;
     int row, col;
     char **array;
 
@@ -27,7 +27,7 @@ int drive_sort(int argc, char* argv[]){
     return 0;
 }
 char ***copyFile(FILE *aFile, int row, int col){
-    char ***strMat;
+    char **strMat;
     int i, j;
     char max[MAX];
     if((strMat=malloc((row)*sizeof(char **))) == NULL){
