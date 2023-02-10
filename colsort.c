@@ -63,7 +63,7 @@ char ***copyFile(FILE *aFile, int row, int col){
 
     for(i=0; i < row; i++){
         for(j = 0; j < col; j++){
-            fscanf(aFile, "%d", max);
+            fscanf(aFile, "%hhd", max);
             strMat[i][j]=strdup(max);
         }
     }
@@ -129,9 +129,9 @@ void pasteFile(FILE *aFile, char **array, int dim){
 int main(char* argv[])
 {
     int ret = 0;
-    double time;
-    struct timespec s;
-    struct timespec e;
+    //double time;
+    //struct timespec s;
+    //struct timespec e;
 
     //clock_gettime(CLOCK_MONOTONIC, &s);
     ret = drive_sort(argv);
