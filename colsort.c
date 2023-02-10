@@ -9,7 +9,25 @@ int strcmp(const char *strOne, const char *strTwo);
 char *strdup(const char *strOne);
 char **combine(char ***strMat, int row, int col);
 void pasteFile(FILE *aFile, char **array, int dim);
-int drive_sort(int argc, char* argv[]){
+/*int drive_sort(int argc, char* argv[]){
+    FILE *file;
+    FILE *fileTwo;
+    char ***strMat;
+    int row, col;
+    char **array;
+
+    if((file=fopen(argv[1], "r")) != NULL || (file=fopen(argv[2], "w")) == NULL){
+        printf("Error: Opening File \n");
+        exit(1);
+    }
+
+    fscanf(file, "%d%d", &row, &col);
+    strMat = copyFile(file, row, col);
+    array = combine(strMat, row, col);
+    pasteFile(fileTwo, array, row*col);
+    return 0;
+}*/
+int drive_sort(char* argv[]){
     FILE *file;
     FILE *fileTwo;
     char ***strMat;
@@ -93,7 +111,7 @@ void pasteFile(FILE *aFile, char **array, int dim){
 }
 
 
-int main(int argc, char* argv[])
+/*int main(int argc, char* argv[])
 {
     int ret = 0;
     double time;
@@ -102,6 +120,21 @@ int main(int argc, char* argv[])
 
     //clock_gettime(CLOCK_MONOTONIC, &s);
     ret = drive_sort(argc, argv);
+    //clock_gettime(CLOCK_MONOTONIC, &e);
+    //time = e.tv_sec - s.tv_sec + (e.tv_nsec - s.tv_nsec)/1e9;
+
+    //fprintf(stderr, "time: %lfs\n", time);
+    return ret;
+}*/
+int main(char* argv[])
+{
+    int ret = 0;
+    double time;
+    struct timespec s;
+    struct timespec e;
+
+    //clock_gettime(CLOCK_MONOTONIC, &s);
+    ret = drive_sort(argv);
     //clock_gettime(CLOCK_MONOTONIC, &e);
     //time = e.tv_sec - s.tv_sec + (e.tv_nsec - s.tv_nsec)/1e9;
 
