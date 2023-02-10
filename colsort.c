@@ -7,7 +7,7 @@
 char ***copyFile(FILE *aFile, int row, int col);
 int strcmp(const char *strOne, const char *strTwo);
 char *strdup(const char *strOne);
-char **combine(char ***strMat, int row, int col);
+char **combine(char **strMat, int row, int col);
 void pasteFile(FILE *aFile, char **array, int dim);
 int drive_sort(int argc, char* argv[]){
     FILE *file, *fileTwo;
@@ -55,7 +55,7 @@ char ***copyFile(FILE *aFile, int row, int col){
 char **combine(char **strMat, int row, int col){
     char **arr;
     int i, j;
-    int *c;
+    int c;
     int maxC;
     char *tempStr;
     if((arr=malloc((row*col)*sizeof(char*))) == NULL){
@@ -70,7 +70,7 @@ char **combine(char **strMat, int row, int col){
         maxC=-1;
         for(j=0; j < row; j++){
             if(c[j] < col){
-                if((maxC==-1) || strcmp(strMat[j][c[j]],tempStr) > 0){
+                if((maxC==-1) || strcmp(strMat[j][c[j]], tempStr) > 0){
                     maxC = j;
                     tempStr = strMat[maxC][c[maxC]];
                 }
