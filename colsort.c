@@ -6,8 +6,8 @@
 int drive_sort(int argc, char* argv[])
 {
     char temp[MAX];
-    FILE* inFile = argv;
-    FILE* outFile;
+    FILE *inFile = argv;
+    FILE *outFile;
     int i, j;
     char** data = NULL;
     int sizeF = 0;
