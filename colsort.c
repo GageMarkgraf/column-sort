@@ -22,12 +22,12 @@ int drive_sort(int argc, char* argv[]){
     }
 
     fscanf(file, "%d%d", &row, &col);
-    strMat = copyFile(file, row, col);
+    //strMat = copyFile(file, row, col);
     array = combine(strMat, row, col);
     pasteFile(fileTwo, array, row*col);
     return 0;
 }
-char ***copyFile(FILE *aFile, int row, int col){
+/*char ***copyFile(FILE *aFile, int row, int col){
     char ***strMat;
     int i, j;
     char max[MAX];
@@ -52,7 +52,7 @@ char ***copyFile(FILE *aFile, int row, int col){
     fclose(aFile);
     return strMat;
 
-}
+}*/
 char **combine(char ***strMat, int row, int col){
     char **arr;
     int i, j;
@@ -108,5 +108,4 @@ int main(int argc, char* argv[])
     fprintf(stderr, "time: %lfs\n", time);
     return ret;
 }
-int main(char* argv[])
 
