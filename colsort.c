@@ -17,22 +17,27 @@ int drive_sort(int argc, char* argv[])
     if ((inFile = (fopen(argv[0], "r"))) == NULL)
     {
         fprintf(stderr, "Error: Cannot open file \n");
-        return (1);
+        return (0);
     }
+
     if ((outFile = (fopen("output.txt", "a"))) == NULL)
     {
         fprintf(stderr, "Error: Cannot open file \n");
-        return (1);
+        return (0);
     }
+
     while(fgets(temp, MAX, inFile) != NULL) 
     {
         if(strchr(temp, '\n'))
+        {
             temp[strlen(temp) - 1] = '\0';
+        }
         data = (char**)realloc(data, sizeof(char**)*(sizeF + 1));
         data[sizeF] = (char*)calloc(MAX, sizeof(char));
         strcpy(data[sizeF], temp);
         sizeF++;
     }
+
     if(sort == 0)
     {
         for(i= 0; i < (sizeF - 1); i++) 
@@ -50,9 +55,15 @@ int drive_sort(int argc, char* argv[])
     } 
     
     for(i = 0; i < sizeF; i++)
+    {
         fprintf(outFile, "%s\n", data[i]);
+    }
+
     for(i = 0; i < sizeF; i++)
+    {
         free(data[i]);
+    }
+    
     free(data);
     fclose(inFile);
     fclose(outFile);
