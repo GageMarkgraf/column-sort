@@ -22,7 +22,7 @@ int drive_sort(int argc, char* argv[])
         strcpy(data[sizeF], temp);
         sizeF++;
     }
-    if(sort == NULL)
+    if(sort == 0)
     {
         for(i= 0; i < (sizeF - 1); ++i) 
         {
