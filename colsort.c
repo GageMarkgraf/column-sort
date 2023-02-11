@@ -59,9 +59,6 @@ int drive_sort(int argc, char* argv[])
     a = fgetc(inFile);
     fputc(a, outFile);
     } while (a != EOF);
-    
-    char a = fgetc(inFile);
-    fputc(a, outFile);
 
     /*for(i = 0; i < sizeF; i++)
     {
