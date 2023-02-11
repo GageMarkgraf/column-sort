@@ -42,7 +42,7 @@ int drive_sort(int argc, char* argv[])
         sizeF++;
     }
 
-    for(i = 0; i < sizeF; i++)
+    for(i = 0; i < sizeF - 1; i++)
     {
         if(strtol(argv[i], &ptr, 10) < strtol(argv[i + 1], &ptr, 10))
         {
