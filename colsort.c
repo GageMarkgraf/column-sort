@@ -6,6 +6,7 @@
 
 int drive_sort(int argc, char* argv[])
 {
+    int sort = argc;
     char temp[MAX];
     FILE* inFile = fopen(argv[1], "r");
     FILE* outFile;
@@ -21,15 +22,33 @@ int drive_sort(int argc, char* argv[])
         strcpy(data[sizeF], temp);
         sizeF++;
     }
-    for(i= 0; i < (sizeF - 1); ++i) 
+    if(sort == NULL)
     {
-        for(j = 0; j < ( sizeF - i - 1); ++j) 
+        for(i= 0; i < (sizeF - 1); ++i) 
         {
-            if(strcmp(data[j], data[j+1]) > 0) 
+            for(j = 0; j < ( sizeF - i - 1); ++j) 
             {
-                strcpy(temp, data[j]);
-                strcpy(data[j], data[j+1]);
-                strcpy(data[j+1], temp);
+                if(strcmp(data[j], data[j+1]) > 0) 
+                {
+                    strcpy(temp, data[j]);
+                    strcpy(data[j], data[j+1]);
+                    strcpy(data[j+1], temp);
+                }
+            }
+        }
+    } 
+    else 
+    {
+        for(i= 0; i < (sizeF - 1); ++i) 
+        {
+            for(j = 0; j < ( sizeF - i - 1); ++j) 
+            {
+                if(strcmp(data[j], data[j+1]) > 0) 
+                {
+                    strcpy(temp, data[j]);
+                    strcpy(data[j], data[j+1]);
+                    strcpy(data[j+1], temp);
+                }
             }
         }
     }
