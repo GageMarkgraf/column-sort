@@ -53,23 +53,13 @@ int drive_sort(int argc, char* argv[])
     }
     do
     {
-        fgetc(inFile);
+        a = fgetc(inFile);
         fputc(a, outFile);
     } while (a != EOF);
     
-    for(i = 0; i < sizeF; i++)
-    {
-        fprintf(outFile, "%s\n", data[i]);
-    }
-
-    for(i = 0; i < sizeF; i++)
-    {
-        free(data[i]);
-    }
-
-    free(data);
     fclose(inFile);
     fclose(outFile);
+    free(data);
     return 0;
 }
     
