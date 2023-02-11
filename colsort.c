@@ -13,7 +13,7 @@ int drive_sort(int argc, char* argv[])
     int i, j;
     char** data = NULL;
     int sizeF = 0;
-    if (inFile = (fopen(argv[1], "r")) == NULL)
+    if ((inFile = (fopen(argv[1], "r"))) == NULL)
     {
         fprintf(stderr, "Error: Cannot open file");
         return (1);
