@@ -42,8 +42,8 @@ int drive_sort(int argc, char* argv[])
     }
     do
     {
-        a = fgetc("sample.txt");
-        fputc(a, "output.txt");
+        a = fgetc(inFile);
+        fputc(a, outFile);
     } while (a != EOF);
     
 
