@@ -4,6 +4,7 @@
 #include <string.h>
 #define MAX 128
 
+int compare(const void* a, const void* b);
 int drive_sort(int argc, char* argv[])
 {
     int sort = argc;
@@ -14,8 +15,9 @@ int drive_sort(int argc, char* argv[])
     char** data = NULL;
     int sizeF = 0;
     char a;
+    FILE* holder = fopen(*argv, "r");
     
-    if ((inFile = (fopen(argv[0], "r"))) == NULL)
+    if ((inFile = (fopen("sample.txt", "r"))) == NULL)
     {
         fprintf(stderr, "Error: Cannot open file \n");
         return (0);
@@ -38,22 +40,17 @@ int drive_sort(int argc, char* argv[])
         strcpy(data[sizeF], temp);
         sizeF++;
     }
-
-    if(sort == 0)
+    do
     {
-        for(i = 0; i < (sizeF - 1); i++) 
-        {
-            for(j = 0; j < (sizeF - i - 1); j++) 
-            {
-                if(strcmp(data[j], data[j + 1]) > 0) 
-                {
-                    strcpy(temp, data[j]);
-                    strcpy(data[j], data[j + 1]);
-                    strcpy(data[j + 1], temp);
-                }
-            }
-        }
-    } 
+        a = fgetc("sample.txt");
+        fputc(a, "output.txt");
+    } while (a != EOF);
+    
+
+    /*for(i = 0; i < sizeF; i++)
+    {
+
+    }
 
     for(i = 0; i < sizeF; i++)
     {
@@ -63,7 +60,7 @@ int drive_sort(int argc, char* argv[])
     for(i = 0; i < sizeF; i++)
     {
         free(data[i]);
-    }
+    }*/
 
     free(data);
     fclose(inFile);
