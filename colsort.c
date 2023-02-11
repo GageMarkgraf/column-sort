@@ -33,6 +33,7 @@ int drive_sort(int argc, char* argv[])
             }
         }
     }
+    outFile = fopen("output.txt", "w");
     for(i = 0; i < sizeF; i++)
         fprintf(outFile, "%s\n", data[i]);
     for(i = 0; i < sizeF; i++)
