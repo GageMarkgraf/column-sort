@@ -14,7 +14,7 @@ int drive_sort(int argc, char* argv[])
     char** data = NULL;
     int sizeF = 0;
     
-    if ((inFile = (fopen(argv[0], "r"))) == NULL)
+    if ((inFile = (fopen(argv, "r"))) == NULL)
     {
         fprintf(stderr, "Error: Cannot open file \n");
         return (0);
@@ -63,7 +63,7 @@ int drive_sort(int argc, char* argv[])
     {
         free(data[i]);
     }
-    
+
     free(data);
     fclose(inFile);
     fclose(outFile);
