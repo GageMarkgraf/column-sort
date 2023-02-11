@@ -15,7 +15,7 @@ int drive_sort(int argc, char* argv[])
     int sizeF = 0;
     char a;
     
-    if ((inFile = (fopen(*argv, "r"))) == NULL)
+    if ((inFile = (fopen(argv[0], "r"))) == NULL)
     {
         fprintf(stderr, "Error: Cannot open file \n");
         return (0);
