@@ -13,7 +13,13 @@ int drive_sort(int argc, char* argv[])
     int i, j;
     char** data = NULL;
     int sizeF = 0;
+    
     if ((inFile = (fopen(argv[0], "r"))) == NULL)
+    {
+        fprintf(stderr, "Error: Cannot open file \n");
+        return (1);
+    }
+    if ((outFile = (fopen("output.txt", "a"))) == NULL)
     {
         fprintf(stderr, "Error: Cannot open file \n");
         return (1);
@@ -42,22 +48,7 @@ int drive_sort(int argc, char* argv[])
             }
         }
     } 
-    else 
-    {
-        for(i = 0; i < (sizeF - 1); i++) 
-        {
-            for(j = 0; j < (sizeF - i - 1); j++) 
-            {
-                if(strcmp(data[j], data[j + 1]) > 0) 
-                {
-                    strcpy(temp, data[j]);
-                    strcpy(data[j], data[j + 1]);
-                    strcpy(data[j + 1], temp);
-                }
-            }
-        }
-    }
-    outFile = fopen("output.txt", "w");
+    
     for(i = 0; i < sizeF; i++)
         fprintf(outFile, "%s\n", data[i]);
     for(i = 0; i < sizeF; i++)
