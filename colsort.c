@@ -1,97 +1,52 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <string.h>
+#define MAX 128
 
-char ***copyFile(FILE *aFile, int row, int col);
-int strcmp(const char *strOne, const char *strTwo);
-char *strdup(const char *strOne);
-char **combine(char ***strMat, int row, int col);
-void pasteFile(FILE *aFile, char **array, int dim);
-int drive_sort(int argc, char* argv[]){
-    FILE *file;
-    FILE *fileTwo;
-    char ***strMat;
-    int row, col;
-    char **array;
-
-    if((file=fopen(argv[1], "r")) != NULL || (file=fopen(argv[2], "w")) == NULL){
-        printf("Error: Opening File \n");
-        exit(1);
-    }
-
-    fscanf(file, "%d%d", &row, &col);
-    //strMat = copyFile(file, row, col);
-    array = combine(strMat, row, col);
-    pasteFile(fileTwo, array, row*col);
-    return 0;
-}
-char ***copyFile(FILE *aFile, int row, int col){
-    char ***strMat;
+int drive_sort(int argc, char* argv[])
+{
+    char temp[MAX];
+    FILE* inFile = argv;
+    FILE* outFile;
     int i, j;
-    char max = 128;
-    if((strMat=malloc((row)*sizeof(char **))) == NULL){
-    printf("Error: Allocation of Memory \n");
-    exit(2);
+    char** data = NULL;
+    int sizeF = 0;
+    if ( (inFile = fopen(inFile, "r")) == NULL ) 
+    {
+        fprintf(stderr, "Error: Could not open %s\n", inFile);
+        return 1;
     }
-
-    for(i=0; i < row; i++){
-        if((strMat[i]=malloc((col)*sizeof(char **))) == NULL){
-            printf("Error: Allocation of Memory \n");
-            exit(3);
-        }
+    while(fgets(temp, MAX, inFile) != NULL) 
+    {
+        if(strchr(temp, '\n'))
+            temp[strlen(temp)-1] = '\0';
+        data = (char**)realloc(data, sizeof(char**)*(sizeF+1));
+        data[sizeF] = (char*)calloc(MAX, sizeof(char));
+        strcpy(data[sizeF], temp);
+        sizeF++;
     }
-
-    for(i=0; i < row; i++){
-        for(j = 0; j < col; j++){
-            fscanf(aFile, "%hhd", max);
-            strMat[i][j]=strdup(max);
-        }
-    }
-    fclose(aFile);
-    return strMat;
-
-}
-char **combine(char ***strMat, int row, int col){
-    char **arr;
-    int i, j;
-    int *c;
-    int maxC;
-    char *tempStr;
-    if((arr=malloc((row*col)*sizeof(char*))) == NULL){
-        printf("Error: Allocation of memory \n");
-        exit(4);
-    }
-    if((c=calloc(row, sizeof(int))) == NULL){
-        printf("Error Allocation of memory: \n");
-        exit(5);
-    }
-    while(i < row*col){
-        maxC=-1;
-        for(j=0; j < row; j++){
-            if(c[j] < col){
-                if((maxC==-1) || strcmp(strMat[j][c[j]], tempStr) > 0){
-                    maxC = j;
-                    tempStr = strMat[maxC][c[maxC]];
-                }
+    for(i= 0; i < (sizeF - 1); ++i) 
+    {
+        for(j = 0; j < ( sizeF - i - 1); ++j) 
+        {
+            if(strcmp(data[j], data[j+1]) > 0) 
+            {
+                strcpy(temp, data[j]);
+                strcpy(data[j], data[j+1]);
+                strcpy(data[j+1], temp);
             }
         }
-        arr[i++] = strMat[maxC][c[maxC]++];
     }
-    free(c);
-    return arr;
+    for(i = 0; i < sizeF; i++)
+        fprintf(outFile, "%s\n", data[i]);
+    for(i = 0; i < sizeF; i++)
+        free(data[i]);
+    free(data);
+    fclose(inFile);
+    fclose(outFile);
+    return 0;
 }
-void pasteFile(FILE *aFile, char **array, int dim){
-    int i;
-    fprintf(aFile, "%d\n", dim);
-    for(i = 0; i < dim; i++){
-        fprintf(aFile, "%s\n", array[i]);
-    }
-    fclose(aFile);
-    return;
-}
-
-
+    
 int main(int argc, char* argv[])
 {
     int ret = 0;
