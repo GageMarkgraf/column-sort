@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #define MAX 128
 
 int drive_sort(int argc, char* argv[])
