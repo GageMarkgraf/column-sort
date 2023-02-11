@@ -56,7 +56,7 @@ int drive_sort(int argc, char* argv[])
     } 
     for(i = 0; i < MAX; i++)
     {
-        strncpy("output.txt", argv[i], MAX);
+        strncpy("output.txt", argv[i], (MAX - 1));
     }
     /*do
     {
