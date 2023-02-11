@@ -8,12 +8,12 @@ int drive_sort(int argc, char* argv[])
 {
     int sort = argc;
     char temp[MAX];
-    FILE* inFile = fopen(argv[1], "r");
+    FILE* inFile;
     FILE* outFile;
     int i, j;
     char** data = NULL;
     int sizeF = 0;
-    if (fopen(argv[1], "r" == NULL))
+    if (inFile = (fopen(argv[1], "r")) == NULL)
     {
         fprintf(stderr, "Error: Cannot open file");
         return (1);
