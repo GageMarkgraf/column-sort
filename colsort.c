@@ -13,10 +13,7 @@ int drive_sort(int argc, char* argv[])
     int i, j;
     char** data = NULL;
     int sizeF = 0;
-    char* ptr;
     char a;
-    const char delim[] = " ";
-    char* tok;
     
     if ((inFile = (fopen(*argv, "r"))) == NULL)
     {
@@ -42,7 +39,7 @@ int drive_sort(int argc, char* argv[])
         sizeF++;
     }
 
-    for(i = 0; i < sizeF - 1; i++)
+    /*for(i = 0; i < sizeF - 1; i++)
     {
         if(atoi(argv[i]) < atoi(argv[i + 1]))
         {
@@ -50,7 +47,7 @@ int drive_sort(int argc, char* argv[])
             strcpy(argv[i], argv[i + 1]);
             strcpy(argv[i + 1], temp);
         }
-    }
+    }*/
     do
     {
         a = fgetc(inFile);
