@@ -6,14 +6,12 @@
 int drive_sort(int argc, char* argv[])
 {
     char temp[MAX];
-    FILE* inFile = NULL;
+    FILE* inFile = fopen(argv[1], "r");
     FILE* outFile = NULL;
-    char* inF = *argv;
-    char* outF = "output";
     int i, j;
     char** data = NULL;
     int sizeF = 0;
-    if ( (inFile = fopen(inF, "r")) == NULL ) 
+    if ( (inFile = fopen(inFile, "r")) == NULL ) 
     {
         fprintf(stderr, "Error: Could not open %s\n", inFile);
         return 1;
