@@ -13,9 +13,9 @@ int drive_sort(int argc, char* argv[])
     int i, j;
     char** data = NULL;
     int sizeF = 0;
-    if ((inFile = (fopen(argv[1], "r"))) == NULL)
+    if ((inFile = (fopen(argv[0], "r"))) == NULL)
     {
-        fprintf(stderr, "Error: Cannot open file");
+        fprintf(stderr, "Error: Cannot open file \n");
         return (1);
     }
     while(fgets(temp, MAX, inFile) != NULL) 
