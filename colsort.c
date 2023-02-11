@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#define MAX 128
 
 char ***copyFile(FILE *aFile, int row, int col);
 int strcmp(const char *strOne, const char *strTwo);
@@ -30,7 +29,7 @@ int drive_sort(int argc, char* argv[]){
 char ***copyFile(FILE *aFile, int row, int col){
     char ***strMat;
     int i, j;
-    char max[MAX];
+    char max = 128;
     if((strMat=malloc((row)*sizeof(char **))) == NULL){
     printf("Error: Allocation of Memory \n");
     exit(2);
