@@ -41,7 +41,7 @@ int drive_sort(int argc, char* argv[])
 
     if(sort == 0)
     {
-        for(i= 0; i < (sizeF - 1); i++) 
+        for(i = 0; i < (sizeF - 1); i++) 
         {
             for(j = 0; j < (sizeF - i - 1); j++) 
             {
@@ -54,13 +54,17 @@ int drive_sort(int argc, char* argv[])
             }
         }
     } 
-    do
+    for(i = 0; i < MAX; i++)
+    {
+        strncpy(outFile, argv[i], MAX);
+    }
+    /*do
     {
     a = fgetc(inFile);
     fputc(a, outFile);
     } while (a != EOF);
 
-    /*for(i = 0; i < sizeF; i++)
+    for(i = 0; i < sizeF; i++)
     {
         fprintf(outFile, "%s\n", data[i]);
     }
