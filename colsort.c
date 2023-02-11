@@ -4,7 +4,6 @@
 #include <string.h>
 #define MAX 128
 
-int compare(const void* a, const void* b);
 int drive_sort(int argc, char* argv[])
 {
     int sort = argc;
@@ -14,10 +13,12 @@ int drive_sort(int argc, char* argv[])
     int i, j;
     char** data = NULL;
     int sizeF = 0;
+    char* ptr;
     char a;
-    FILE* holder = fopen(*argv, "r");
+    const char delim[] = " ";
+    char* tok;
     
-    if ((inFile = (fopen("sample.txt", "r"))) == NULL)
+    if ((inFile = (fopen(*argv, "r"))) == NULL)
     {
         fprintf(stderr, "Error: Cannot open file \n");
         return (0);
@@ -29,7 +30,7 @@ int drive_sort(int argc, char* argv[])
         return (0);
     }
 
-    while(fgets(temp, MAX, inFile) != NULL) 
+    /*while(fgets(temp, MAX, inFile) != NULL) 
     {
         if(strchr(temp, '\n'))
         {
@@ -39,19 +40,23 @@ int drive_sort(int argc, char* argv[])
         data[sizeF] = (char*)calloc(MAX, sizeof(char));
         strcpy(data[sizeF], temp);
         sizeF++;
+    }*/
+
+    for(i = 0; i < sizeF; i++)
+    {
+        if(strtol(argv[i], &ptr, 10) < strtol(argv[i + 1], &ptr, 10))
+        {
+            strcpy(temp, argv[i]);
+            strcpy(argv[i], argv[i + 1]);
+            strcpy(argv[i + 1], temp);
+        }
     }
     do
     {
-        a = fgetc(inFile);
+        fgetc(inFile);
         fputc(a, outFile);
     } while (a != EOF);
     
-
-    /*for(i = 0; i < sizeF; i++)
-    {
-
-    }
-
     for(i = 0; i < sizeF; i++)
     {
         fprintf(outFile, "%s\n", data[i]);
@@ -60,7 +65,7 @@ int drive_sort(int argc, char* argv[])
     for(i = 0; i < sizeF; i++)
     {
         free(data[i]);
-    }*/
+    }
 
     free(data);
     fclose(inFile);
