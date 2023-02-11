@@ -13,6 +13,11 @@ int drive_sort(int argc, char* argv[])
     int i, j;
     char** data = NULL;
     int sizeF = 0;
+    if (fopen(argv[1], "r" == NULL))
+    {
+        fprintf(stderr, "Error: Cannot open file");
+        return (1);
+    }
     while(fgets(temp, MAX, inFile) != NULL) 
     {
         if(strchr(temp, '\n'))
