@@ -16,38 +16,38 @@ int drive_sort(int argc, char* argv[])
     while(fgets(temp, MAX, inFile) != NULL) 
     {
         if(strchr(temp, '\n'))
-            temp[strlen(temp)-1] = '\0';
-        data = (char**)realloc(data, sizeof(char**)*(sizeF+1));
+            temp[strlen(temp) - 1] = '\0';
+        data = (char**)realloc(data, sizeof(char**)*(sizeF + 1));
         data[sizeF] = (char*)calloc(MAX, sizeof(char));
         strcpy(data[sizeF], temp);
         sizeF++;
     }
     if(sort == 0)
     {
-        for(i= 0; i < (sizeF - 1); ++i) 
+        for(i= 0; i < (sizeF - 1); i++) 
         {
-            for(j = 0; j < ( sizeF - i - 1); ++j) 
+            for(j = 0; j < (sizeF - i - 1); j++) 
             {
-                if(strcmp(data[j], data[j+1]) > 0) 
+                if(strcmp(data[j], data[j + 1]) > 0) 
                 {
                     strcpy(temp, data[j]);
-                    strcpy(data[j], data[j+1]);
-                    strcpy(data[j+1], temp);
+                    strcpy(data[j], data[j + 1]);
+                    strcpy(data[j + 1], temp);
                 }
             }
         }
     } 
     else 
     {
-        for(i= 0; i < (sizeF - 1); ++i) 
+        for(i = 0; i < (sizeF - 1); i++) 
         {
-            for(j = 0; j < ( sizeF - i - 1); ++j) 
+            for(j = 0; j < (sizeF - i - 1); j++) 
             {
-                if(strcmp(data[j], data[j+1]) > 0) 
+                if(strcmp(data[j], data[j + 1]) > 0) 
                 {
                     strcpy(temp, data[j]);
-                    strcpy(data[j], data[j+1]);
-                    strcpy(data[j+1], temp);
+                    strcpy(data[j], data[j + 1]);
+                    strcpy(data[j + 1], temp);
                 }
             }
         }
