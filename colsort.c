@@ -30,7 +30,7 @@ int drive_sort(int argc, char* argv[])
         return (0);
     }
 
-    /*while(fgets(temp, MAX, inFile) != NULL) 
+    while(fgets(temp, MAX, inFile) != NULL) 
     {
         if(strchr(temp, '\n'))
         {
@@ -40,7 +40,7 @@ int drive_sort(int argc, char* argv[])
         data[sizeF] = (char*)calloc(MAX, sizeof(char));
         strcpy(data[sizeF], temp);
         sizeF++;
-    }*/
+    }
 
     for(i = 0; i < sizeF; i++)
     {
