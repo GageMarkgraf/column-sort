@@ -54,15 +54,6 @@ int drive_sort(int argc, char* argv[])
             }
         }
     } 
-    for(i = 0; i < sizeF; i++)
-    {
-        strncpy("output.txt", argv[i], (MAX - 1));
-    }
-    /*do
-    {
-    a = fgetc(inFile);
-    fputc(a, outFile);
-    } while (a != EOF);
 
     for(i = 0; i < sizeF; i++)
     {
@@ -72,7 +63,7 @@ int drive_sort(int argc, char* argv[])
     for(i = 0; i < sizeF; i++)
     {
         free(data[i]);
-    }*/
+    }
 
     free(data);
     fclose(inFile);
