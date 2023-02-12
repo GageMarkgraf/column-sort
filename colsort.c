@@ -3,7 +3,7 @@
 #include <time.h>
 #include <string.h>
 #define MAX_LINES 3
-#define MAX 128
+#define MAX 127
 const char *myarg = NULL;
 int drive_sort(int argc, char* argv[])
 {
