@@ -33,6 +33,12 @@ int drive_sort(int argc, char* argv[])
         return (0);
     }
 
+        do
+    {
+        a = fgetc(inFile);
+        fputc(a, outFile);
+    } while (a != EOF);
+    
     while(!feof(inFile) && !ferror(inFile))
     {
         if(fgets(lines[line], MAX, inFile) != NULL)
@@ -50,11 +56,7 @@ int drive_sort(int argc, char* argv[])
     {
     printf("%s", lines[j]);
     }*/
-    do
-    {
-        a = fgetc(inFile);
-        fputc(a, outFile);
-    } while (a != EOF);
+
     
     fclose(inFile);
     fclose(outFile);
