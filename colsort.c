@@ -28,7 +28,7 @@ int drive_sort(int argc, char* argv[])
         return (0);
     }
 
-    fscanf(inFile, "%s %s %s", &str1, &str2, &str3);
+    fscanf(inFile, "%s\n", &str1, &str2, &str3);
 
     do
     {
