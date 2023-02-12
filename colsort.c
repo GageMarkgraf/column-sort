@@ -7,19 +7,12 @@
 const char *myarg = NULL;
 int drive_sort(int argc, char* argv[])
 {
-    myarg = argv[1];
     int sort = argc;
-    char temp[MAX];
     FILE* inFile;
     FILE* outFile;
-    int i = 0;
+    int i = 0, j = 0, k = 0, n;
     char a;
-    //char str[] = (char)myarg[0];
-    char del[] = " ";
-    //char* ptr = strtok(str, del);
-    char mat[10];
-    char lines[MAX_LINES][MAX];
-    int line = 0;
+    char m[MAX][MAX_LINES];
 
     if ((inFile = (fopen(argv[1], "r"))) == NULL)
     {
@@ -38,13 +31,35 @@ int drive_sort(int argc, char* argv[])
         a = fgetc(inFile);
         fputc(a, outFile);
     } while (a != EOF);
-    
-    while(!feof(inFile) && !ferror(inFile))
+
+    while(i < MAX && fgets(m[i], MAX, stdin) != NULL)
     {
-        if(fgets(lines[line], MAX, inFile) != NULL)
+        n = strlen(m[i]);
+        if(n > 0 && m[i][n-1] == '\n')
         {
-            line++;
+            m[i][n-1] = '\0';
         }
+        i++;
+    }
+    for(j = 0; j < i; j++)
+    {
+        char val[MAX];
+        strcpy(val, m[j]);
+        for(k = j; k < i; k++)
+        {
+            if(strcmp(m[k], val) < 0)
+            {
+                char tmp[MAX];
+                strcpy(tmp, m[k]);
+                strcpy(m[k], val);
+                strcpy(val, tmp);
+            }
+        }
+        strcpy(m[j], val);
+    }
+    for(j = 0; j < i; j++)
+    {
+        printf("%s\n", m[j]);
     }
 
     /*do
