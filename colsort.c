@@ -16,6 +16,7 @@ int drive_sort(int argc, char* argv[])
     char tmp[MAX_LINES];
     char c;
     char str1, str2, str3;
+    char* append = "%c[^\n]";
 
     if ((inFile = (fopen(argv[1], "r"))) == NULL)
     {
@@ -33,7 +34,7 @@ int drive_sort(int argc, char* argv[])
     {
         fprintf(outFile, "%c", c);
     }   
-    c = "%c[^\n]";
+    c = append;
     scanf(c, "%[^\n] %[^\n] %[^\n]", str1, str2, str3);
 
     fprintf(outFile, "%c", str1);
