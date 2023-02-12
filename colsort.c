@@ -41,7 +41,7 @@ int drive_sort(int argc, char* argv[])
 
     for(int i = 0; i < MAX_LINES; i++)
     {
-        printf("%s", m[i]);
+        fprintf(outFile, "%s", m[i]);
     }
 
     /*do
