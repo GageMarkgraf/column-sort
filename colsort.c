@@ -14,8 +14,12 @@ int drive_sort(int argc, char* argv[])
     char a;
     char line[MAX];
     char tmp[MAX_LINES];
-    char c[2] = "\0";
+    char c;
     char str1, str2, str3;
+    char del[] = "\n";
+    
+    
+
 
     if ((inFile = (fopen(argv[1], "r"))) == NULL)
     {
@@ -33,32 +37,10 @@ int drive_sort(int argc, char* argv[])
     {
         fprintf(outFile, "%c", c);
     }   
-    scanf(c, "%[^\n] %[^\n] %[^\n]", str1, str2, str3);
 
     fprintf(outFile, "%c", str1);
     fprintf(outFile, "%c", str2);
     fprintf(outFile, "%c", str3);
-
-
-    /*do
-    {
-        a = fgetc(inFile);
-        fputc(a, outFile);
-    } while (a != EOF);*/
-
-    
-
-
-    /*do
-    {
-        ptr = (NULL, del);
-        i++;
-    } while (i < sort);
-    for(int j = 0; j < MAX_LINES - 1; j++)
-    {
-    printf("%s", lines[j]);
-    }*/
-
     
     fclose(inFile);
     fclose(outFile);
