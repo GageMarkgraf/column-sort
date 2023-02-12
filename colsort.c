@@ -7,13 +7,14 @@
 const char *myarg = NULL;
 int drive_sort(int argc, char* argv[])
 {
-    int line = 0;
     int sort = argc;
     FILE* inFile;
     FILE* outFile;
     int i = 0;
     char a;
-    char m[MAX_LINES][MAX];
+    char line[MAX];
+    char tmp[MAX_LINES];
+    char str1, str2, str3;
 
     if ((inFile = (fopen(argv[1], "r"))) == NULL)
     {
@@ -27,22 +28,21 @@ int drive_sort(int argc, char* argv[])
         return (0);
     }
 
+    for(int i = 0; i < MAX_LINES; i++)
+    {
+        fscanf(inFile, "%s %s %s\n", &str1, &str2, &str3);
+    }
+
         do
     {
         a = fgetc(inFile);
         fputc(a, outFile);
     } while (a != EOF);
 
-    /*while(!feof(inFile) && !ferror(inFile))
-    {
-        if(fgets(m[line], MAX, inFile) != NULL);
-        line++;
-    }
+    fprintf(outFile, "%s\n", str1);
+    fprintf(outFile, "%s\n", str2);
+    fprintf(outFile, "%s\n", str3);
 
-    for(int i = 0; i < MAX_LINES; i++)
-    {
-        fprintf(outFile, "%s", m[i]);
-    }*/
 
     /*do
     {
