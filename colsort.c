@@ -18,7 +18,6 @@ int drive_sort(int argc, char* argv[])
     char del[] = " ";
     //char* ptr = strtok(str, del);
     int len = strlen(argv[1]);
-    char* temp;
     char mat[10];
     char lines[MAX_LINES][MAX];
     int line = 0;
@@ -51,7 +50,7 @@ int drive_sort(int argc, char* argv[])
     } while (i < sort);*/
     for(int j = 0; j < MAX_LINES; j++)
     {
-    fprintf("%c", lines[j]);
+    printf("%s", lines[j]);
     }
     do
     {
