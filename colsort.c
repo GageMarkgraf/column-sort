@@ -28,13 +28,9 @@ int drive_sort(int argc, char* argv[])
         return (0);
     }
     
-    while(feof(inFile))
-    {
-        text[i++] = fgetc(inFile);
-    }
-    text[i] = '\0';
+    fscanf(inFile, "%s", text);
 
-    fprintf(outFile, "%c", text);
+    fprintf(outFile, "%s", text);
         
 
     /*do
