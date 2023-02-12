@@ -36,11 +36,11 @@ int drive_sort(int argc, char* argv[])
     fprintf(outFile, "%s", &str2);
     fprintf(outFile, "%s", &str3);
 
-    do
+    /*do
     {
         a = fgetc(inFile);
         fputc(a, outFile);
-    } while (a != EOF);
+    } while (a != EOF);*/
 
     
 
