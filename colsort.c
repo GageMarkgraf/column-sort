@@ -17,13 +17,12 @@ int drive_sort(int argc, char* argv[])
     //char str[] = (char)myarg[0];
     char del[] = " ";
     //char* ptr = strtok(str, del);
-    int len = strlen(argv[1]);
     char mat[10];
     char lines[MAX_LINES][MAX];
     int line = 0;
 
 
-    if ((inFile = (fopen(*argv, "r"))) == NULL)
+    if ((inFile = (fopen(argv[1], "r"))) == NULL)
     {
         fprintf(stderr, "Error: Cannot open file \n");
         return (0);
