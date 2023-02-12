@@ -7,7 +7,7 @@
 const char *myarg = NULL;
 int drive_sort(int argc, char* argv[])
 {
-    int line = MAX_LINES;
+    int line = 0;
     int sort = argc;
     FILE* inFile;
     FILE* outFile;
@@ -33,13 +33,10 @@ int drive_sort(int argc, char* argv[])
         fputc(a, outFile);
     } while (a != EOF);
 
-    for(int i = 0; i < MAX_LINES; i++)
+    while(!feof(inFile) && !ferror(inFile))
     {
-        if(fgets(m[i], sizeof m[i], inFile) == NULL)
-        {
-            fprintf(stderr, "Error reading line", i);
-            exit(1);
-        }
+        if(fgets(m[line], MAX, inFile) != NULL);
+        line++;
     }
 
     for(int i = 0; i < MAX_LINES; i++)
