@@ -14,7 +14,7 @@ int drive_sort(int argc, char* argv[])
     char a;
     char line[MAX];
     char tmp[MAX_LINES];
-    char str1;
+    char str1 = (fopen(argv[1], "r"));
 
     if ((inFile = (fopen(argv[1], "r"))) == NULL)
     {
@@ -27,8 +27,7 @@ int drive_sort(int argc, char* argv[])
         fprintf(stderr, "Error: Cannot open file \n");
         return (0);
     }
-    fscanf(inFile, EOF, &str1);
-    fprintf(outFile, "%c", &str1);
+    fprintf(outFile, "%c", str1);
         
 
     /*do
