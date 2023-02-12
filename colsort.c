@@ -13,7 +13,7 @@ int drive_sort(int argc, char* argv[])
     FILE* outFile;
     int i = 0;
     char a;
-    char m[MAX];
+    char m[MAX_LINES][MAX];
 
     if ((inFile = (fopen(argv[1], "r"))) == NULL)
     {
@@ -33,10 +33,13 @@ int drive_sort(int argc, char* argv[])
         fputc(a, outFile);
     } while (a != EOF);
 
-    while(line--)
+    for(int i = 0; i < MAX_LINES; i++)
     {
-        fscanf(inFile, "%s", &m[i]);
-        i++;
+        if(fgets(m[i], sizeof m[i], inFile) == NULL)
+        {
+            fprintf(stderr, "Error reading line", i);
+            exit(1);
+        }
     }
 
     for(int i = 0; i < MAX_LINES; i++)
