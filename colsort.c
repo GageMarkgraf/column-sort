@@ -33,7 +33,7 @@ int drive_sort(int argc, char* argv[])
     {
         fprintf(outFile, "%c", c);
     }   
-    c = "%c\n";
+    c = "%c[^\n]";
     scanf(c, "%[^\n] %[^\n] %[^\n]", str1, str2, str3);
 
     fprintf(outFile, "%c", str1);
