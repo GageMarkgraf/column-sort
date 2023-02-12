@@ -34,7 +34,8 @@ int drive_sort(int argc, char* argv[])
     {
         fprintf(outFile, "%c", c);
     }   
-    strcat(c, &append ,2);
+    strcpy(str1, c);
+    strcat(str1, &append);
     scanf(c, "%[^\n] %[^\n] %[^\n]", str1, str2, str3);
 
     fprintf(outFile, "%c", str1);
