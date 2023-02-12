@@ -27,10 +27,8 @@ int drive_sort(int argc, char* argv[])
         fprintf(stderr, "Error: Cannot open file \n");
         return (0);
     }
-    while(fscanf(inFile, "%[^\n] %[^\n] %[^\0]", str1, str2 ,str3) != EOF)
-        {
-            printf("%[^\n] %[^\n] %[^\0]", str1, str2, str3);
-        }
+    fscanf(inFile, "%[^\n] %[^\n] %[^\0]", str1, str2 ,str3);
+        
 
     /*do
     {
