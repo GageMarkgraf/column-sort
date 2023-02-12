@@ -21,7 +21,7 @@ int drive_sort(int argc, char* argv[])
     char lines[MAX_LINES][MAX];
     int line = 0;
 
-    prinf("%s filename:", argv[0]);
+    printf("%s filename:", argv[0]);
 
     if ((inFile = (fopen(argv[1], "r"))) == NULL)
     {
