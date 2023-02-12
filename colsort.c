@@ -28,10 +28,12 @@ int drive_sort(int argc, char* argv[])
         return (0);
     }
 
-    for(int i = 0; i < MAX_LINES; i++)
-    {
-    fscanf(inFile, "%[^\n]", &str1, &str2, &str3);
-    }
+    
+    fscanf(inFile, "%[^\n]", &str1);
+    fscanf(inFile, "%[^\n] %[^\n]", &str2);
+    fscanf(inFile, "%[^\n] %[^\n] %[^\n]", &str3);
+
+    
     fprintf(outFile, "%s", &str1);
     fprintf(outFile, "%s", &str2);
     fprintf(outFile, "%s", &str3);
