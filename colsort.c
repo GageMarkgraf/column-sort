@@ -14,7 +14,7 @@ int drive_sort(int argc, char* argv[])
     char a;
     char line[MAX];
     char tmp[MAX_LINES];
-    char str1[MAX];
+    char str1[500];
 
     if ((inFile = (fopen(argv[1], "r"))) == NULL)
     {
