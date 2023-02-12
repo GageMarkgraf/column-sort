@@ -3,7 +3,7 @@
 #include <time.h>
 #include <string.h>
 #define MAX_LINES 3
-#define MAX 127
+#define MAX 128
 const char *myarg = NULL;
 int drive_sort(int argc, char* argv[])
 {
@@ -37,7 +37,7 @@ int drive_sort(int argc, char* argv[])
 
     while(!feof(inFile) && !ferror(inFile))
     {
-        if(fgets(lines[line], MAX, inFile) != NULL)
+        if(fgets(lines[line], MAX - 2, inFile) != NULL)
         {
             line++;
         }
