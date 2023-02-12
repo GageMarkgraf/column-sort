@@ -35,7 +35,7 @@ int drive_sort(int argc, char* argv[])
         return (0);
     }
 
-    while(!feof(inFile) && !ferror(inFile))
+    /*while(!feof(inFile) && !ferror(inFile))
     {
         if(fgets(lines[line], MAX - 2, inFile) != NULL)
         {
