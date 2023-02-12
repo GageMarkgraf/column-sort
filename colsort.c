@@ -27,8 +27,8 @@ int drive_sort(int argc, char* argv[])
         fprintf(stderr, "Error: Cannot open file \n");
         return (0);
     }
-
-    fscanf(inFile, "\n", &str1);
+    for(int i = 0; i < MAX_LINES; i++)
+        fscanf(inFile, "\n", &str1);
     
     fprintf(outFile, "%s", &str1);
 
