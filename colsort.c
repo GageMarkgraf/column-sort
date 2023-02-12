@@ -14,9 +14,9 @@ int drive_sort(int argc, char* argv[])
     FILE* outFile;
     int i = 0;
     char a;
-    char str[] = (char)myarg[0];
+    //char str[] = (char)myarg[0];
     char del[] = " ";
-    char* ptr = strtok(str, del);
+    //char* ptr = strtok(str, del);
     int len = strlen(argv[1]);
     char* temp;
     char mat[10];
