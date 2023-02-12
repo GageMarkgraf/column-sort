@@ -27,7 +27,7 @@ int drive_sort(int argc, char* argv[])
         fprintf(stderr, "Error: Cannot open file \n");
         return (0);
     }
-    fscanf(inFile, "%[^\0]", &str1);
+    fscanf(inFile, EOF, &str1);
     fprintf(outFile, "%c", &str1);
         
 
