@@ -14,7 +14,7 @@ int drive_sort(int argc, char* argv[])
     char a;
     char line[MAX];
     char tmp[MAX_LINES];
-    char str1, str2, str3;
+    char str1;
 
     if ((inFile = (fopen(argv[1], "r"))) == NULL)
     {
@@ -28,11 +28,9 @@ int drive_sort(int argc, char* argv[])
         return (0);
     }
 
-    fscanf(inFile, "%[^\n]", &str1, &str2, &str3);
+    fscanf(inFile, "\n", &str1);
     
     fprintf(outFile, "%s", &str1);
-    fprintf(outFile, "%s", &str2);
-    fprintf(outFile, "%s", &str3);
 
     /*do
     {
