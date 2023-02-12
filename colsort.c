@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#define MAX_LINES 3
 #define MAX 128
 
 int drive_sort(int argc, char* argv[])
@@ -10,11 +11,18 @@ int drive_sort(int argc, char* argv[])
     char temp[MAX];
     FILE* inFile;
     FILE* outFile;
-    int i, j;
-    char** data = NULL;
-    int sizeF = 0;
+    int i = 0;
     char a;
-    
+    char str[] = argv[1];
+    char del[] = " ";
+    char* ptr = strtok(str, del);
+    int len = strlen(argv[1]);
+    char* temp;
+    char mat[10];
+    char lines[MAX_LINES][MAX];
+    int line = 0;
+
+
     if ((inFile = (fopen(*argv, "r"))) == NULL)
     {
         fprintf(stderr, "Error: Cannot open file \n");
@@ -27,27 +35,23 @@ int drive_sort(int argc, char* argv[])
         return (0);
     }
 
-    /*while(fgets(temp, MAX, inFile) != NULL) 
+    while(!feof(inFile) && !ferror(inFile))
     {
-        if(strchr(temp, '\n'))
+        if(fgets(lines[line], MAX, inFile) != NULL)
         {
-            temp[strlen(temp) - 1] = '\0';
+            line++;
         }
-        data = (char**)realloc(data, sizeof(char**)*(sizeF + 1));
-        data[sizeF] = (char*)calloc(MAX, sizeof(char));
-        strcpy(data[sizeF], temp);
-        sizeF++;
     }
 
-    for(i = 0; i < sizeF - 1; i++)
+    /*do
     {
-        if(atoi(argv[i]) < atoi(argv[i + 1]))
-        {
-            strcpy(temp, argv[i]);
-            strcpy(argv[i], argv[i + 1]);
-            strcpy(argv[i + 1], temp);
-        }
-    }*/
+        ptr = (NULL, del);
+        i++;
+    } while (i < sort);*/
+    for(int j = 0; j < MAX_LINES; j++)
+    {
+    fprintf("%c", lines[j]);
+    }
     do
     {
         a = fgetc(inFile);
@@ -56,7 +60,6 @@ int drive_sort(int argc, char* argv[])
     
     fclose(inFile);
     fclose(outFile);
-    free(data);
     return 0;
 }
     
