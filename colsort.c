@@ -30,7 +30,7 @@ int drive_sort(int argc, char* argv[])
 
     for(int i = 0; i < MAX_LINES; i++)
     {
-        fscanf(inFile, "%s %s %s\n", &str1, &str2, &str3);
+        fscanf(inFile, "%s %s %s", &str1, &str2, &str3);
     }
 
         do
