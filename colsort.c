@@ -4,16 +4,17 @@
 #include <string.h>
 #define MAX_LINES 3
 #define MAX 128
-
+const char *myarg = NULL;
 int drive_sort(int argc, char* argv[])
 {
+    myarg = argv[1];
     int sort = argc;
     char temp[MAX];
     FILE* inFile;
     FILE* outFile;
     int i = 0;
     char a;
-    char str[] = argv[0];
+    char str[] = myarg[0];
     char del[] = " ";
     char* ptr = strtok(str, del);
     int len = strlen(argv[1]);
