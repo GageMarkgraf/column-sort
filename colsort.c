@@ -28,20 +28,15 @@ int drive_sort(int argc, char* argv[])
         return (0);
     }
 
-    for(int i = 0; i < MAX_LINES; i++)
-    {
-        fscanf(inFile, "%s %s %s", &str1, &str2, &str3);
-    }
+    fscanf(inFile, "%s %s %s", &str1, &str2, &str3);
 
-        do
+    do
     {
         a = fgetc(inFile);
         fputc(a, outFile);
     } while (a != EOF);
 
-    fprintf(outFile, "%s\n", str1);
-    fprintf(outFile, "%s\n", str2);
-    fprintf(outFile, "%s\n", str3);
+    
 
 
     /*do
