@@ -33,7 +33,7 @@ int drive_sort(int argc, char* argv[])
         fputc(a, outFile);
     } while (a != EOF);
 
-    while(!feof(inFile) && !ferror(inFile))
+    /*while(!feof(inFile) && !ferror(inFile))
     {
         if(fgets(m[line], MAX, inFile) != NULL);
         line++;
@@ -41,8 +41,8 @@ int drive_sort(int argc, char* argv[])
 
     for(int i = 0; i < MAX_LINES; i++)
     {
-        fprintf(outFile, "%s", &m[i]);
-    }
+        fprintf(outFile, "%s", m[i]);
+    }*/
 
     /*do
     {
